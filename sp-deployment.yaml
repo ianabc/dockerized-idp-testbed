@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sp
+  labels:
+    app: sp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sp
+    spec:
+      containers:
+      - image: docker.io/pimsubc/idp-testbed_sp
+        imagePullPolicy: Always
+        name: sp
+        volumeMounts:
+        - name: spkey
+          mountPath: "/run/secrets/sp-key"
+          readOnly: true
+      restartPolicy: Always
+
+      volumes:
+      - name: spkey
+        secret:
+          secretName: sp-key

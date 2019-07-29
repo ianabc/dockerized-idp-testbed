@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: idp
+  labels:
+    app: idp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: idp
+    spec:
+      containers:
+      - env:
+        - name: JETTY_BACKCHANNEL_SSL_KEYSTORE_PASSWORD
+          value: password
+        - name: JETTY_BROWSER_SSL_KEYSTORE_PASSWORD
+          value: password
+        - name: JETTY_MAX_HEAP
+          value: 64m
+        image: docker.io/pimsubc/idp-testbed_idp
+        imagePullPolicy: Always
+        name: idp
+        volumeMounts:
+        - name: idp
+          mountPath: "/run/secrets/idp"
+          readOnly: true
+
+      restartPolicy: Always
+      volumes:
+        - name: idp
+          secret:
+            secretName: idp

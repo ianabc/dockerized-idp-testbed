@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: httpd-proxy
+  labels:
+    app: httpd-proxy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: httpd-proxy
+    spec:
+      containers:
+      - image: docker.io/pimsubc/idp-testbed_httpd-proxy
+        name: httpd-proxy
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+      restartPolicy: Always
