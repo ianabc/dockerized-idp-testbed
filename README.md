@@ -1,4 +1,4 @@
-# dockerized-idp-testbed
+# k8s-idp-testbed
 
 Used to validate the following Unicon docker images in a kubernetes setting:
 
@@ -7,10 +7,10 @@ Used to validate the following Unicon docker images in a kubernetes setting:
 - shibboleth-sp:
   [https://hub.docker.com/r/unicon/shibboleth-sp](https://github.com/Unicon/shibboleth-sp-dockerized).
 
-More documentation is forthcoming, but it's a full working IDP, SP, and LDAP
-server that runs under `kubernetes`. The included `docker-compose.yaml` is
-mostly just for rebuilding the base images to include minor changes. If you are
-interested in running this setup with docker-compose, see the original
+A working IDP, SP, and LDAP server running under `kubernetes`. The included
+[./images/docker-compose.yaml] is mostly just for rebuilding the base images to
+include minor changes. If you are interested in running this setup with
+docker-compose, see the original
 [dockerized-idp-testbed](https://github.com/UniconLabs/dockerized-idp-testbed)
 repository.
 
